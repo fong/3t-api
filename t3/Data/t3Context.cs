@@ -15,4 +15,6 @@ using t3.Models;
         public DbSet<t3.Models.Game> Game { get; set; }
 
         public DbSet<t3.Models.Player> Player { get; set; }
+
+        public DbSet<t3.Models.Auth> Auth { get; set; }
     }

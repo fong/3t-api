@@ -34,7 +34,7 @@ namespace t3
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "MemeBank", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "3t-game", Version = "v1" });
             });
         }
 
@@ -60,7 +60,7 @@ namespace t3
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "3t API V1");
                 c.RoutePrefix = string.Empty; // launch swagger from root
             });
         }

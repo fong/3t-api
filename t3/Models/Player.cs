@@ -6,8 +6,6 @@
 
         public string playerName { get; set; }
 
-        public string passcode { get; set; }
-
         public int mmr { get; set; }
 
         public int wins { get; set; }

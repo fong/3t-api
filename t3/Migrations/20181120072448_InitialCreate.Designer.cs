@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace t3.Migrations
 {
     [DbContext(typeof(t3Context))]
-    [Migration("20181119132935_InitialCreate")]
+    [Migration("20181120072448_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -15,6 +15,20 @@ namespace t3.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+
+            modelBuilder.Entity("t3.Models.Auth", b =>
+                {
+                    b.Property<string>("playerID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("passcode");
+
+                    b.Property<string>("playerName");
+
+                    b.HasKey("playerID");
+
+                    b.ToTable("Auth");
+                });
 
             modelBuilder.Entity("t3.Models.Game", b =>
                 {
@@ -48,8 +62,6 @@ namespace t3.Migrations
                     b.Property<int>("games");
 
                     b.Property<int>("mmr");
-
-                    b.Property<string>("passcode");
 
                     b.Property<string>("playerName");
 

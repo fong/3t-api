@@ -15,6 +15,7 @@ namespace t3.Models
         public int turn { get; set; }
         public long p1_timestamp { get; set; }
         public long p2_timestamp { get; set; }
+        public int winner { get; set; }
 
     }
 }

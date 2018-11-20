@@ -7,6 +7,19 @@ namespace t3.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Auth",
+                columns: table => new
+                {
+                    playerID = table.Column<string>(nullable: false),
+                    playerName = table.Column<string>(nullable: true),
+                    passcode = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Auth", x => x.playerID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Game",
                 columns: table => new
                 {
@@ -30,7 +43,6 @@ namespace t3.Migrations
                 {
                     playerID = table.Column<string>(nullable: false),
                     playerName = table.Column<string>(nullable: true),
-                    passcode = table.Column<string>(nullable: true),
                     mmr = table.Column<int>(nullable: false),
                     wins = table.Column<int>(nullable: false),
                     games = table.Column<int>(nullable: false)
@@ -43,6 +55,9 @@ namespace t3.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Auth");
+
             migrationBuilder.DropTable(
                 name: "Game");
 
