@@ -30,7 +30,8 @@ namespace t3.Migrations
                     watchers = table.Column<int>(nullable: false),
                     turn = table.Column<int>(nullable: false),
                     p1_timestamp = table.Column<long>(nullable: false),
-                    p2_timestamp = table.Column<long>(nullable: false)
+                    p2_timestamp = table.Column<long>(nullable: false),
+                    winner = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

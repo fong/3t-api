@@ -47,6 +47,8 @@ namespace t3.Migrations
 
                     b.Property<int>("watchers");
 
+                    b.Property<int>("winner");
+
                     b.HasKey("gameID");
 
                     b.ToTable("Game");

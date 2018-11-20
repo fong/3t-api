@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace t3.Migrations
 {
     [DbContext(typeof(t3Context))]
-    [Migration("20181120072448_InitialCreate")]
+    [Migration("20181120131316_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,8 @@ namespace t3.Migrations
                     b.Property<int>("turn");
 
                     b.Property<int>("watchers");
+
+                    b.Property<int>("winner");
 
                     b.HasKey("gameID");
 
