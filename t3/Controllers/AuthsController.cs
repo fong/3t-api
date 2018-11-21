@@ -41,7 +41,8 @@ namespace t3.Controllers
                         return Ok(q);
                     } else // Incorrect passcode
                     {
-                        return Ok("Fail");
+                        q.passcode = null;
+                        return Ok(q);
                     }
                 } else // Create account
                 {
@@ -59,7 +60,7 @@ namespace t3.Controllers
 
                     _context.Auth.Add(auth);
                     await _context.SaveChangesAsync();
-                    return Ok(p);
+                    return Ok(auth);
                 }
             }
             return Ok();
