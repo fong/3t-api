@@ -92,20 +92,16 @@ namespace t3.Controllers
             if (g == null)
             {
                 return Ok();
+            } else { // detach
+                _context.Entry(g).State = EntityState.Detached;
             }
-
-            _context.Entry(game).State = EntityState.Modified;
 
             try
             {
-                _context.Game.Update(game);
-
                 if (game.winner > 0)
                 {
                     var p1 = await _context.Player.FindAsync(game.player1);
                     var p2 = await _context.Player.FindAsync(game.player2);
-                    _context.Entry(p1).State = EntityState.Modified;
-                    _context.Entry(p2).State = EntityState.Modified;
 
                     if (game.winner == 1)
                     { 
@@ -114,8 +110,6 @@ namespace t3.Controllers
                         p1.games++;
                         p2.games++;
                         p1.wins++;
-                        _context.Player.Update(p1);
-                        _context.Player.Update(p2);
                     } else if (game.winner == 2)
                     {
                         p1.mmr--;
@@ -123,29 +117,28 @@ namespace t3.Controllers
                         p1.games++;
                         p2.games++;
                         p2.wins++;
-                        _context.Player.Update(p1);
-                        _context.Player.Update(p2);
                     } else if (game.winner == 3)
                     {
                         p1.games++;
                         p2.games++;
-                        _context.Player.Update(p1);
-                        _context.Player.Update(p2);
                     } else if (game.winner == 4)
                     {
                         game.board = "[0,0,0,0,0,0,0,0,0]";
                         game.winner = 0;
-                        _context.Game.Update(game);
                     }
+                    _context.Entry(p1).State = EntityState.Modified;
+                    _context.Entry(p2).State = EntityState.Modified;
                 } else
                 {
                     if (game.player2 != null)
                     {
                         Random rand = new Random();
                         game.turn = rand.Next(1, 3);
-                        _context.Game.Update(game);
                     }
                 }
+
+                _context.Entry(game).State = EntityState.Modified;
+                
                 await _context.SaveChangesAsync();
                 return Ok();
             }
