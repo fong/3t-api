@@ -56,7 +56,7 @@ namespace t3.Controllers
 
             if (game != null)
             {
-                return Ok("game already exists");
+                return Ok(game);
             } else
             {
                 var new_game = new Game
