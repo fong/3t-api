@@ -167,13 +167,13 @@ namespace t3.Controllers
             var game = await _context.Game.FindAsync(id);
             if (game == null)
             {
-                return NotFound();
+                return Ok();
             }
 
             _context.Game.Remove(game);
             await _context.SaveChangesAsync();
 
-            return Ok(game);
+            return Ok();
         }
 
         private bool GameExists(string id)
