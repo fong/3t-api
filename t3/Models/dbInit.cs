@@ -14,22 +14,11 @@ namespace t3.Models
             using (var context = new t3Context(
                 serviceProvider.GetRequiredService<DbContextOptions<t3Context>>()))
             {
-                //if (context.Game.Count() == 0)
-                //{
-                //    context.Game.AddRange(new Game
-                //    {
-                //        gameID = "aaaaaa",
-                //        player1 = "",
-                //        player2 = "",
-                //        watchers = 0,
-                //        board = "",
-                //        turn = 1,
-                //        p1_timestamp = 0,
-                //        p2_timestamp = 0
-                //    });
-
-                //    context.SaveChanges();
-                //}
+                if (context.Game.Count() > 0)
+                {
+                    context.Game.RemoveRange(context.Game);
+                    context.SaveChanges();
+                }
 
                 //if (context.Player.Count() == 0)
                 //{
