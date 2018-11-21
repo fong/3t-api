@@ -67,7 +67,7 @@ namespace t3.Controllers
                     board = "[0,0,0,0,0,0,0,0,0]",
                     watchers = 0,
                     turn = 0,
-                    p1_timestamp = 0,
+                    p1_timestamp = g.p1_timestamp,
                     p2_timestamp = 0,
                     winner = 0, // 0 = not started, 1 = player1, 2 = player2, 3 = draw
                 };
