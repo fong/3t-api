@@ -157,14 +157,14 @@ namespace t3.Controllers
 
         // DELETE: api/Games/5
         [HttpDelete]
-        public async Task<IActionResult> DeleteGame([FromQuery] string id)
+        public async Task<IActionResult> DeleteGame([FromQuery] string gameID)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var game = await _context.Game.FindAsync(id);
+            var game = await _context.Game.FindAsync(gameID);
             if (game == null)
             {
                 return Ok();
