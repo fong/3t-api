@@ -34,7 +34,7 @@ namespace t3.Controllers
                     return Ok(game);
                 } else
                 {
-                    return Ok();
+                    return Ok(new Game());
                 }
             } else
             {
