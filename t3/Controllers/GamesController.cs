@@ -87,6 +87,13 @@ namespace t3.Controllers
                 return BadRequest(ModelState);
             }
 
+            var g = await _context.Game.FindAsync(game.gameID);
+
+            if (g == null)
+            {
+                return Ok();
+            }
+
             _context.Entry(game).State = EntityState.Modified;
 
             try
